@@ -48,7 +48,7 @@ name = "grammers_session"
 path = "src/lib.rs"
 
 [dependencies.grammers-tl-types]
-version = "0.8.0"
+version = "0.11.0"
 
 [dependencies.log]
 version = "0.4.28"
