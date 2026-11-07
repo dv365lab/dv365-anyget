@@ -32,11 +32,11 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       '@kookyleo/graphviz-anywhere-web':
-        specifier: ^0.1.8
-        version: 0.1.8
+        specifier: ^0.2.1
+        version: 0.2.1
       '@kookyleo/plantuml-little-web':
         specifier: 1.2026.2-3
-        version: 1.2026.2-3(@kookyleo/graphviz-anywhere-web@0.1.8)
+        version: 1.2026.2-3(@kookyleo/graphviz-anywhere-web@0.2.1)
       '@tauri-apps/api':
         specifier: ^2.12.4
         version: 2.12.4
@@ -437,8 +437,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kookyleo/graphviz-anywhere-web@0.1.8':
-    resolution: {integrity: sha512-TglGhQJh1zAdXtKslqVSwXgEgwgy7RfovqTmx/QePrGK73w6evvN5aMQwSnHqWR4vQVhevi+QMGPQMPVpj/BHA==}
+  '@kookyleo/graphviz-anywhere-web@0.2.1':
+    resolution: {integrity: sha512-WjtbPCKTQSF0O4fylshWQj1Hydspug052pqxYjeclXXuBhtePTQClpnQdGSfqAbX+trxpuZNsneJ3OqAO4+7ig==}
 
   '@kookyleo/plantuml-little-web@1.2026.2-3':
     resolution: {integrity: sha512-BKwhOhQD+ZtBOnzWlAcMrd0Y1itSeAyCCqXoSR9qQhS1BwbJel47N06NGkBMJzITqDviSRdrqFE4g6BCCjLHOA==}
@@ -2396,11 +2396,11 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@kookyleo/graphviz-anywhere-web@0.1.8': {}
+  '@kookyleo/graphviz-anywhere-web@0.2.1': {}
 
-  '@kookyleo/plantuml-little-web@1.2026.2-3(@kookyleo/graphviz-anywhere-web@0.1.8)':
+  '@kookyleo/plantuml-little-web@1.2026.2-3(@kookyleo/graphviz-anywhere-web@0.2.1)':
     optionalDependencies:
-      '@kookyleo/graphviz-anywhere-web': 0.1.8
+      '@kookyleo/graphviz-anywhere-web': 0.2.1
 
   '@mermaid-js/parser@1.2.1':
     dependencies:
