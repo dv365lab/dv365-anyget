@@ -1,33 +1,14 @@
 <script lang="ts">
-  import { open } from "@tauri-apps/plugin-shell";
   import { getVersion } from "@tauri-apps/api/app";
   import { t } from "$lib/i18n";
 
-  const GITHUB_URL = "https://github.com/OpenSelena/omniget";
   let appVersion = $state("");
 
   $effect(() => {
     getVersion().then((v) => { appVersion = v; }).catch(() => {});
   });
 
-  async function openGitHub() {
-    await open(GITHUB_URL);
-  }
 </script>
-
-<section class="star-section">
-  <p class="star-description">{$t('about.star_description')}</p>
-  <div class="star-iframe-wrapper">
-    <iframe
-      src="https://ghbtns.com/github-btn.html?user=OpenSelena&repo=omniget&type=star&count=true&size=large"
-      frameborder="0"
-      scrolling="0"
-      width="170"
-      height="30"
-      title="GitHub Stars"
-    ></iframe>
-  </div>
-</section>
 
 <section class="project-header">
   <img src="/loop.png" alt="Loop" class="project-logo" width="64" height="64" />
@@ -52,63 +33,6 @@
 {/if}
 
 <style>
-  .star-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--padding);
-    width: 100%;
-  }
-
-  .star-description {
-    font-size: var(--text-base);
-    font-weight: 500;
-    color: var(--secondary);
-  }
-
-  .star-iframe-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  .star-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: calc(var(--padding) / 2);
-    margin: 0 auto;
-    padding: calc(var(--padding) / 2) calc(var(--padding) * 1.5);
-    font-size: var(--text-base);
-    font-weight: 500;
-    color: var(--text);
-    background: var(--surface);
-    border: none;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: background var(--duration-fast) var(--ease-out);
-  }
-
-  .star-button svg {
-    pointer-events: none;
-    flex-shrink: 0;
-    color: var(--warning);
-  }
-
-  @media (hover: hover) {
-    .star-button:hover {
-      background: var(--surface-hi);
-    }
-  }
-
-  .star-button:active {
-    background: var(--fill-2);
-  }
-
-  .star-button:focus-visible {
-    outline: var(--focus-ring);
-    outline-offset: var(--focus-ring-offset);
-  }
-
   .project-header {
     display: flex;
     flex-direction: column;

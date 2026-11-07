@@ -477,20 +477,8 @@ input[type="radio"]:not([class]):disabled {
 .group > .group-row + .group-row,
 .group > .list-row + .list-row,
 .group > .setting-row + .setting-row {
-  position: relative;
-}
-
-.group > .group-row + .group-row::before,
-.group > .list-row + .list-row::before,
-.group > .setting-row + .setting-row::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: var(--space-3);
-  right: 0;
-  height: var(--hairline);
-  background: var(--separator);
-  pointer-events: none;
+  /* A real border keeps the row background measurable for contrast checks. */
+  border-top: var(--hairline) solid var(--separator);
 }
 
 .group-row {

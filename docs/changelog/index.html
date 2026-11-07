@@ -83,7 +83,7 @@
 
       --text: #171717;
       --text-muted: #666666;
-      --text-subtle: #888888;
+      --text-subtle: #666666;
       --text-inverse: #ffffff;
 
       --primary: #171717;
@@ -132,7 +132,7 @@
 
       --text: #ededed;
       --text-muted: #a1a1aa;
-      --text-subtle: #71717a;
+      --text-subtle: #a1a1aa;
       --text-inverse: #000000;
 
       --primary: #ededed;
@@ -785,6 +785,8 @@
       font-size: 14px;
     }
 
+    .doc-table small { font-size: 12px; }
+
     .doc-table th {
       text-align: left;
       padding: 10px 16px;
@@ -823,8 +825,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      height: 44px;
-      padding: 0 8px 0 16px;
+      min-height: 44px;
+      padding: 8px 8px 8px 16px;
       background: var(--code-header);
       border-bottom: 1px solid var(--code-border);
     }
@@ -833,9 +835,9 @@
       font-family: var(--font-mono);
       font-size: 12.5px;
       color: #a1a1aa;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
 
     .btn-copy {
@@ -879,7 +881,7 @@
     }
 
     .tok-c {
-      color: #737373;
+      color: #a1a1aa;
     }
 
     /* ---------- Prev / next pagination ---------- */
@@ -1239,6 +1241,16 @@
       }
     }
 
+    /* Keep every section reachable without clipping tab labels on phones. */
+    @media (max-width: 768px) {
+      .nav-subtabs-inner { gap: 4px; padding: 0 12px; }
+      .nav-subtabs-inner .subtab-item {
+        flex: 1; min-width: 32px; justify-content: center; padding: 0;
+      }
+      .nav-subtabs-inner .subtab-item .icon { display: inline-block; }
+      .nav-subtabs-inner .subtab-item > span { display: none; }
+    }
+
     @media (max-width: 640px) {
       .btn-top-download {
         display: none;
@@ -1303,7 +1315,7 @@
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="themeIconMoon"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></svg>
         </button>
 
-        <a class="btn-top-download" href="https://github.com/OpenSelena/omniget/releases/latest">
+        <a class="btn-top-download" href="../installation/">
           <span>Get App</span>
           <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" />
   <path d="m12 5 7 7-7 7" /></svg>
@@ -1313,20 +1325,20 @@
 
     <div class="nav-subtabs">
       <div class="nav-subtabs-inner" id="topSubtabs">
-        <a href="../" class="subtab-item">
+        <a href="../" class="subtab-item" aria-label="Quickstart" title="Quickstart">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
   <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" />
   <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
   <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></svg>
           <span>Quickstart</span>
         </a>
-        <a href="../installation/" class="subtab-item">
+        <a href="../installation/" class="subtab-item" aria-label="Installation" title="Installation">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3" />
   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
   <path d="m7 10 5 5 5-5" /></svg>
           <span>Installation</span>
         </a>
-        <a href="../mcp/" class="subtab-item">
+        <a href="../mcp/" class="subtab-item" aria-label="MCP Server" title="MCP Server">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v2" />
   <path d="M12 2v2" />
   <path d="M17 20v2" />
@@ -1343,21 +1355,21 @@
   <rect x="8" y="8" width="8" height="8" rx="1" /></svg>
           <span>MCP Server</span>
         </a>
-        <a href="../courses/" class="subtab-item">
+        <a href="../courses/" class="subtab-item" aria-label="36 Course Platforms" title="36 Course Platforms">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
   <path d="M22 10v6" />
   <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></svg>
           <span>36 Course Platforms</span>
         </a>
-        <a href="../nami/" class="subtab-item">
+        <a href="../nami/" class="subtab-item" aria-label="Nami" title="Nami">
           <svg class="icon icon-fill" viewBox="0 0 24 24" fill="currentColor"><title>Instagram</title><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
           <span>Nami</span>
         </a>
-        <a href="../changelog/" class="subtab-item active">
+        <a href="../changelog/" class="subtab-item active" aria-label="Changelog" title="Changelog">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3" /><circle cx="12" cy="12" r="9" /></svg>
           <span>Changelog</span>
         </a>
-        <a href="../troubleshooting/" class="subtab-item">
+        <a href="../troubleshooting/" class="subtab-item" aria-label="Troubleshooting" title="Troubleshooting">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" /></svg>
           <span>Troubleshooting</span>
         </a>
@@ -1472,10 +1484,7 @@
         </div>
         <ul class="sidebar-nav-list">
           <li>
-            <a href="https://github.com/OpenSelena/omniget" target="_blank" rel="noopener" class="sidebar-link">
-              <span>GitHub Repository</span>
-              <svg class="icon icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto; opacity: 0.5;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
-            </a>
+
           </li>
           <li>
             <a href="https://t.me/omniget" target="_blank" rel="noopener" class="sidebar-link">
@@ -1496,7 +1505,7 @@
         <span class="breadcrumb-current">Changelog &amp; Releases</span>
       </div>
 
-      
+
       <h1 class="doc-h1" id="changelog">Release Notes &amp; Changelog</h1>
       <p class="doc-lead">
         Release notes, feature changes, and system patches for OmniGet. All desktop releases are signed, reproducible, and published with SHA-256 binary validation.
@@ -1512,10 +1521,7 @@
             </div>
             <h2 class="release-title">Brand Redesign, Local-First Architecture &amp; CLI Dataset Archiving</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.15.0" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -1591,10 +1597,7 @@
             </div>
             <h2 class="release-title">CLI Output Formatting, AppImage Library Isolation &amp; Localization Expansion</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.14.3" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -1643,10 +1646,7 @@
             </div>
             <h2 class="release-title">Penguin Artwork Refresh, Video Dataset CLI &amp; Architecture Cleanups</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.14.2" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -1694,10 +1694,7 @@
             </div>
             <h2 class="release-title">Yoinks Penguin Visual Asset Integration &amp; Brand Refresh</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.14.1" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -1725,10 +1722,7 @@
             </div>
             <h2 class="release-title">Offline Study Module, BitTorrent Telemetry &amp; Course Platform Upgrades</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.14.0" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -1802,10 +1796,7 @@
             </div>
             <h2 class="release-title">YouTube Stream Muxing, FFmpeg Auto-Download &amp; MosCat Navigation</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.13.0" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -1869,10 +1860,7 @@
             </div>
             <h2 class="release-title">Telegram Core Sync, Cross-DC Bot Avatars &amp; Full 12-Locale Parity</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.12.2" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -1931,10 +1919,7 @@
             </div>
             <h2 class="release-title">Global Update Notification Banner &amp; Dependencies Table Alignment</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.12.1" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -1972,10 +1957,7 @@
             </div>
             <h2 class="release-title">Telegram API Credentials, Official Community Migration &amp; CSP Star Badge Fix</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.12.0" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -2008,7 +1990,7 @@
             Content Security Policy &amp; Star Badge Restoration
           </h3>
           <ul class="release-list">
-            <li>Extended webview Content Security Policy with <code>frame-src 'self' https://ghbtns.com;</code> to unblock GitHub star badge widgets.</li>
+            <li>Extended webview Content Security Policy with <code>frame-src</code> to unblock GitHub star badge widgets.</li>
             <li>Eliminated placeholder gray box on About Project view while preserving strict script and asset security directives.</li>
           </ul>
         </div>
@@ -2024,10 +2006,7 @@
             </div>
             <h2 class="release-title">36 Course Platforms Wired, Security Hardening &amp; Metadata Polish</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.11.0" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -2081,10 +2060,7 @@
             </div>
             <h2 class="release-title">Telegram OmniGram Directory Isolation &amp; Statically Embedded Plugins</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.10.5" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
 
         <div class="release-section">
@@ -2136,10 +2112,7 @@
             </div>
             <h2 class="release-title">Plugin Command Signatures &amp; Telegram Sync Handlers</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.10.4" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
         <ul class="release-list">
           <li>Registered missing login command signatures across course provider authentication routines.</li>
@@ -2157,10 +2130,7 @@
             </div>
             <h2 class="release-title">Telegram Datacenter Handshake Fix</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.10.3" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
         <ul class="release-list">
           <li>Fixed persistent download interruptions and handshake resets (<code>DC_ID_INVALID</code>) when pulling large media files from Telegram home servers.</li>
@@ -2177,10 +2147,7 @@
             </div>
             <h2 class="release-title">Windows Core &amp; WebView2 COM Type Alignment</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.10.2" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
         <ul class="release-list">
           <li>Aligned <code>windows-core</code> dependencies to 0.61 across Rust crates, resolving <code>webview2-com</code> <code>PWSTR</code> type conflicts on Windows 10/11 runners.</li>
@@ -2198,10 +2165,7 @@
             </div>
             <h2 class="release-title">OpenSelena Marketplace &amp; Registry Migration</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.10.1" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
         <ul class="release-list">
           <li>Migrated plugin marketplace discovery endpoints to the official OpenSelena ecosystem.</li>
@@ -2219,10 +2183,7 @@
             </div>
             <h2 class="release-title">OmniGet v0.10 Milestone Release</h2>
           </div>
-          <a href="https://github.com/OpenSelena/omniget/releases/tag/v0.10.0" target="_blank" rel="noopener" class="subtab-item" style="border: 1px solid var(--border); text-decoration: none;">
-            <span>GitHub Tag</span>
-            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+
         </div>
         <ul class="release-list">
           <li><strong>Integrated 36 Course Platforms:</strong> Study dashboard for Hotmart, Udemy, Kajabi, Rocketseat, and Kiwify.</li>
@@ -2231,8 +2192,8 @@
           <li><strong>158 Tools in 25 Categories:</strong> Video converters, format transcoders, audio extractors, and thumbnail generators.</li>
         </ul>
       </article>
-    
-      
+
+
       <div class="page-nav-grid">
         <a href="../troubleshooting/" class="page-nav-card">
           <span class="page-nav-sub">Previous Guide</span>
@@ -2280,10 +2241,7 @@
       </ul>
 
       <div class="toc-community-box">
-        <a href="https://github.com/OpenSelena/omniget" class="toc-community-link" target="_blank" rel="noopener">
-          <svg class="icon icon-fill icon-sm" viewBox="0 0 24 24" fill="currentColor"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-          <span>Edit page on GitHub</span>
-        </a>
+
         <a href="https://t.me/OpenSelena" class="toc-community-link" target="_blank" rel="noopener">
           <svg class="icon icon-fill icon-sm" viewBox="0 0 24 24" fill="currentColor"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
           <span>Ask in Telegram</span>

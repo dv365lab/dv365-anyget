@@ -24,7 +24,7 @@
   let updated = $state(false);
 
   const RETRY_REMEDIES: Remedy[] = ["use_impersonation", "switch_player_client", "wait_and_retry"];
-  const POT_GUIDE_URL = "https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide";
+  const POT_GUIDE_URL = "https://omniget.nav.bd/docs/troubleshooting/";
 
   $effect(() => {
     const stderr = error;

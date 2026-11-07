@@ -2,7 +2,6 @@
   /** Forçar H.264 (estudo 39, enhanced-h264ify): a opção mora na extensão do navegador; aqui está o guia e o script para quem usa Tampermonkey. */
   import { t } from "$lib/i18n";
   import { showToast } from "$lib/stores/toast-store.svelte";
-  import { openUrl } from "$lib/tools/rt";
 
   const USERSCRIPT = `// ==UserScript==
 // @name         OmniGet · Force H.264 on YouTube
@@ -36,7 +35,7 @@
       <div class="group-row"><div class="group-row-content"><div class="group-row-title">{$t("tools.codec.how")}</div><ol class="steps"><li>{$t("tools.codec.step1")}</li><li>{$t("tools.codec.step2")}</li><li>{$t("tools.codec.step3")}</li></ol></div></div>
       <div class="group-row">
         <div class="group-row-content"><div class="group-row-title">{$t("tools.codec.extension")}</div><div class="group-row-sub">{$t("tools.codec.extension_hint")}</div></div>
-        <div class="group-row-trailing btn-row"><a class="btn btn-secondary btn-sm" href="/settings">{$t("tools.codec.open_settings")}</a><button class="btn btn-ghost btn-sm" type="button" onclick={() => openUrl("https://github.com/OpenSelena/omniget#browser-extension")}>GitHub</button></div>
+        <div class="group-row-trailing btn-row"><a class="btn btn-secondary" href="/settings">{$t("tools.codec.open_settings")}</a></div>
       </div>
     </div>
   </section>
@@ -44,7 +43,7 @@
     <div class="group">
       <div class="group-row">
         <div class="group-row-content"><div class="group-row-title">{$t("tools.codec.userscript")}</div><div class="group-row-sub">{$t("tools.codec.userscript_hint")}</div></div>
-        <div class="group-row-trailing"><button class="btn btn-secondary btn-sm" type="button" onclick={copy}>{$t("tools.common.copy")}</button></div>
+        <div class="group-row-trailing"><button class="btn btn-secondary" type="button" onclick={copy}>{$t("tools.common.copy")}</button></div>
       </div>
       <div class="group-row"><pre class="code">{USERSCRIPT}</pre></div>
     </div>

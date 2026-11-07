@@ -38,9 +38,9 @@ twitch-downloader, subtitle-downloader, epub-reader, spaced-repetition
 
 <p align="center">
   <a href="https://omniget.nav.bd/"><img src="https://img.shields.io/badge/Website-omniget.nav.bd-FF7D38?style=for-the-badge" alt="Сайт сообщества" /></a>
-  <a href="https://github.com/OpenSelena/omniget/releases/latest"><img src="https://img.shields.io/github/v/release/OpenSelena/omniget?style=for-the-badge&label=release&color=F28500" alt="Последний релиз" /></a>
-  <a href="https://github.com/OpenSelena/omniget/releases"><img src="https://img.shields.io/github/downloads/OpenSelena/omniget/total?style=for-the-badge&label=downloads&color=1E6FE8" alt="Всего загрузок" /></a>
-  <a href="https://github.com/OpenSelena/omniget/stargazers"><img src="https://img.shields.io/github/stars/OpenSelena/omniget?style=for-the-badge&color=FFD426" alt="Звёзды на GitHub" /></a>
+
+
+
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-2AA845?style=for-the-badge" alt="Лицензия GPL-3.0" /></a>
   <a href="https://t.me/OpenSelena"><img src="https://img.shields.io/badge/Telegram-channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Канал в Telegram" /></a>
   <a href="https://hosted.weblate.org/engage/omniget-openselena/"><img src="https://hosted.weblate.org/widget/omniget-openselena/frontend/svg-badge.svg" alt="Статус перевода" /></a>
@@ -59,7 +59,7 @@ twitch-downloader, subtitle-downloader, epub-reader, spaced-repetition
 <p align="center">
   <img src="https://img.shields.io/badge/Дисклеймер-FF7D38" alt="Дисклеймер" height="20" /><br/>
   <sub>Этот проект является независимым форком и не связан с OmniGet или с Tonho.<br/>
-  Поддерживается <a href="https://github.com/igect">igect</a> под GPL-3.0 · На основе оригинальной архитектуры <a href="https://github.com/tonhowtf">Tonho</a></sub>
+  Поддерживается igect под GPL-3.0 · На основе оригинальной архитектуры Tonho</sub>
 </p>
 
 <p align="center">
@@ -114,7 +114,7 @@ yt-dlp — это движок, на котором работает OmniGet, и
 
 ## Скачать и установить
 
-Выберите свою систему. Все сборки публикуются на [странице релизов](https://github.com/OpenSelena/omniget/releases/latest). Обновления приходят внутри приложения.
+Выберите свою систему. Все сборки публикуются на [странице релизов](docs/installation/). Обновления приходят внутри приложения.
 
 <table>
   <tr>
@@ -194,7 +194,7 @@ sudo pacman -S gst-plugins-good gst-plugins-bad gst-libav   # Arch
 
 ## Что скачивает OmniGet
 
-У OmniGet есть собственные экстракторы для самых популярных платформ, а всё остальное он передаёт [yt-dlp](https://github.com/yt-dlp/yt-dlp), который покрывает около 1 800 сайтов.
+У OmniGet есть собственные экстракторы для самых популярных платформ, а всё остальное он передаёт yt-dlp, который покрывает около 1 800 сайтов.
 
 | Категория | Сайты и форматы |
 |---|---|
@@ -240,7 +240,7 @@ sudo pacman -S gst-plugins-good gst-plugins-bad gst-libav   # Arch
 
 ### Уровень 2: из zip-архива релиза
 
-В каждом релизе есть `omniget-chrome-extension-vX.Y.Z.zip`. Скачайте его из [последнего релиза](https://github.com/OpenSelena/omniget/releases/latest), распакуйте и повторите шаги 3–7 выше, указав в **Загрузить распакованное расширение** распакованную папку. Это удобно, если приложение стоит на одной машине, а браузер на другой, или вы ставите расширение кому-то ещё.
+В каждом релизе есть `omniget-chrome-extension-vX.Y.Z.zip`. Скачайте его из [последнего релиза](docs/installation/), распакуйте и повторите шаги 3–7 выше, указав в **Загрузить распакованное расширение** распакованную папку. Это удобно, если приложение стоит на одной машине, а браузер на другой, или вы ставите расширение кому-то ещё.
 
 ### Уровень 3: Firefox, другие браузеры и ручное сопряжение
 
@@ -654,7 +654,7 @@ Debian и Ubuntu: `.deb`. Fedora, openSUSE, семейство RHEL: `.rpm`. В�
 
 ## Командная строка
 
-`omniget-cli` выходит с каждым релизом для Windows, macOS (Intel и Apple Silicon) и Linux. Возьмите `omniget-cli-<version>-<target>` из [последнего релиза](https://github.com/OpenSelena/omniget/releases/latest).
+`omniget-cli` выходит с каждым релизом для Windows, macOS (Intel и Apple Silicon) и Linux. Возьмите `omniget-cli-<version>-<target>` из [последнего релиза](docs/installation/).
 
 ```bash
 omniget info <url>                     # название, форматы и размер; ничего не скачивает
@@ -671,7 +671,7 @@ omniget import-cookies cookies.txt     # формат Netscape
 Если вы просто хотите пользоваться OmniGet, [возьмите релиз](#скачать-и-установить). Для сборки нужны [Rust](https://rustup.rs/) (точная версия тулчейна закреплена в `rust-toolchain.toml`, потому что от неё зависит ABI плагинов), [Node.js](https://nodejs.org/) 18+ и [pnpm](https://pnpm.io/).
 
 ```bash
-git clone https://github.com/OpenSelena/omniget.git
+# Extract the project source archive before continuing.
 cd omniget
 pnpm install
 pnpm tauri dev
@@ -695,7 +695,7 @@ pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 Релизы подписывают артефакты обновления приватным ключом, который есть только у мейнтейнера, поэтому обычный `pnpm tauri build` останавливается с ошибкой «A public key has been found, but no private key». Флаг выше отключает эти артефакты для локальной сборки и ничего больше не меняет.
 
-Плагины `courses`, `telegram` и `convert` лежат внутри `src-tauri/plugins/` и собираются в основной бинарник. Реестр плагинов: [omniget-plugins](https://github.com/OpenSelena/omniget-plugins).
+Плагины `courses`, `telegram` и `convert` лежат внутри `src-tauri/plugins/` и собираются в основной бинарник. Реестр плагинов: omniget-plugins.
 
 Стек: Tauri 2, Rust, SvelteKit на Svelte 5, SQLite, yt-dlp, FFmpeg, librqbit для торрентов, whisper.cpp, aria2, gallery-dl.
 
@@ -703,18 +703,15 @@ pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 ## Участие и переводы
 
-Сообщения об ошибках и pull request'ы — в [Issues](https://github.com/OpenSelena/omniget/issues) и [Pull requests](https://github.com/OpenSelena/omniget/pulls). Вопросы и быстрая помощь — в [Telegram](https://t.me/OpenSelena). Вопросы безопасности и сообщения об уязвимостях: [SECURITY.md](SECURITY.md) или [igect@vk.com](mailto:igect@vk.com).
+Сообщения об ошибках и pull request'ы — в Issues и Pull requests. Вопросы и быстрая помощь — в [Telegram](https://t.me/OpenSelena). Вопросы безопасности и сообщения об уязвимостях: [SECURITY.md](SECURITY.md) или [igect@vk.com](mailto:igect@vk.com).
 
 Переводы ведутся на [Weblate](https://hosted.weblate.org/engage/omniget-openselena/). Выберите свой язык и переводите в браузере. Новые строки появляются там через несколько часов после попадания в `main`.
 
-OmniGet построен на [yt-dlp](https://github.com/yt-dlp/yt-dlp), [FFmpeg](https://ffmpeg.org/), [gallery-dl](https://github.com/mikf/gallery-dl), [whisper.cpp](https://github.com/ggerganov/whisper.cpp), [aria2](https://aria2.github.io/), [SponsorBlock](https://sponsor.ajay.app/), [Return YouTube Dislike](https://returnyoutubedislike.com/), [FxTwitter](https://github.com/FixTweet/FxTwitter), [Spicetify](https://spicetify.app/), [cat-catch](https://github.com/xifangczy/cat-catch) (части перехватчика медиа из расширения) и [Tauri](https://tauri.app/). Спасибо всем, кто их поддерживает.
+OmniGet построен на yt-dlp, [FFmpeg](https://ffmpeg.org/), gallery-dl, whisper.cpp, [aria2](https://aria2.github.io/), [SponsorBlock](https://sponsor.ajay.app/), [Return YouTube Dislike](https://returnyoutubedislike.com/), FxTwitter, [Spicetify](https://spicetify.app/), cat-catch (части перехватчика медиа из расширения) и [Tauri](https://tauri.app/). Спасибо всем, кто их поддерживает.
 
 Пингвин на главном экране — маскот OmniGet. Фан-арт приветствуется. Бренд и официальная графика не могут использоваться в коммерческих целях или распространяться в сторонних форках без разрешения.
 
-<p align="center">
-  <a href="https://star-history.com/#OpenSelena/omniget&Date"><img src="https://api.star-history.com/svg?repos=OpenSelena/omniget&type=Date" alt="История звёзд OpenSelena/omniget" width="600" /></a>
-</p>
 
 <p align="center">
-  <a href="https://github.com/OpenSelena/omniget/releases/latest"><b>Скачать OmniGet</b></a> · <a href="LICENSE">GPL-3.0</a>
+  <a href="docs/installation/"><b>Скачать OmniGet</b></a> · <a href="LICENSE">GPL-3.0</a>
 </p>

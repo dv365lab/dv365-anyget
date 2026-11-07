@@ -381,7 +381,7 @@
             onclick={() => (ytdlpDismissed = true)}
             aria-label={$t("ytdlp_missing_banner.dismiss") as string}
           >
-            ✕
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m2 2 8 8M10 2l-8 8" /></svg>
           </button>
         </div>
       </div>
@@ -624,14 +624,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     background: none;
     border: none;
     border-radius: var(--radius-sm);
     color: var(--text-muted);
     cursor: pointer;
-    padding: 0;
+    padding: 8px;
   }
 
   @media (hover: hover) {

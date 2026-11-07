@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 // @ts-nocheck
 /**
  * OmniGet Targeted UI Linter (powered by lintapple + Playwright)
@@ -23,7 +22,6 @@ import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { chromium } from "playwright";
 import { checkPage, validatePolicy } from "lintapple";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -576,6 +574,9 @@ async function ensureStaticDocsServer() {
 }
 
 async function launchChromiumBrowser() {
+  // Pure policy/target helpers are also imported by Vitest. Load the browser
+  // runtime only when an actual rendered audit needs it.
+  const { chromium } = await import("playwright");
   for (const opts of [{}, { channel: "chrome" }, { channel: "msedge" }]) {
     try {
       return await chromium.launch(opts);
@@ -586,6 +587,60 @@ async function launchChromiumBrowser() {
   throw new Error(
     "No Chromium/Chrome/Edge browser found. Run `npx playwright install chromium --only-shell`."
   );
+}
+
+// A scrollable app pane sits inside overflow:hidden window chrome. lintapple
+// can therefore report a zero-height hit area for a correctly-sized control
+// below the fold. Re-audit that control after scrolling it into view instead
+// of suppressing its rule or accepting the apparent zero-size target.
+export async function recheckScrollFindings(page, policy, findings, auditPage = checkPage) {
+  const verified = [];
+  for (const item of findings) {
+    const canRecheck =
+      (item.rule === "control-size" && /× 0px/.test(item.message)) ||
+      (item.rule === "text-contrast" && /placeholder background needs review/.test(item.message));
+    if (!canRecheck) {
+      verified.push(item);
+      continue;
+    }
+    const offscreen = await page.evaluate((selector) => {
+      const el = document.querySelector(selector);
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      for (let parent = el.parentElement; parent; parent = parent.parentElement) {
+        if (/(auto|scroll)/.test(getComputedStyle(parent).overflowY) &&
+            parent.scrollHeight > parent.clientHeight) {
+          const bounds = parent.getBoundingClientRect();
+          if (rect.bottom <= bounds.top || rect.top >= bounds.bottom) return true;
+        }
+      }
+      return false;
+    }, item.selector);
+    if (!offscreen) {
+      verified.push(item);
+      continue;
+    }
+    const saved = await page.evaluateHandle((selector) => {
+      const el = document.querySelector(selector);
+      const positions = [];
+      for (let parent = el?.parentElement; parent; parent = parent.parentElement) {
+        positions.push({ node: parent, top: parent.scrollTop, left: parent.scrollLeft });
+      }
+      el.scrollIntoView({ block: "center", behavior: "instant" });
+      return positions;
+    }, item.selector);
+    try {
+      const result = await auditPage(page, policy);
+      const remaining = result.findings.find((f) => f.rule === item.rule && f.selector === item.selector);
+      if (remaining) verified.push(remaining);
+    } finally {
+      await page.evaluate((positions) => {
+        for (const { node, top, left } of positions) node.scrollTo({ top, left, behavior: "instant" });
+      }, saved);
+      await saved.dispose();
+    }
+  }
+  return verified;
 }
 
 async function auditTarget(browser, baseUrl, surface, target, themes, policy) {
@@ -616,6 +671,16 @@ async function auditTarget(browser, baseUrl, surface, target, themes, policy) {
           }, theme);
         }
 
+        // Audits must also run offline: third-party fonts and update services
+        // must not hold page load open or make results depend on the network.
+        await context.route("**/*", (route) => {
+          const url = new URL(route.request().url());
+          if (["http:", "https:"].includes(url.protocol) &&
+              !["127.0.0.1", "localhost", "[::1]"].includes(url.hostname)) {
+            return route.abort();
+          }
+          return route.continue();
+        });
         const page = await context.newPage();
         page.setDefaultTimeout(60000);
         const url =
@@ -640,7 +705,10 @@ async function auditTarget(browser, baseUrl, surface, target, themes, policy) {
         await page.waitForTimeout(200);
 
         const result = await checkPage(page, policy);
-        for (const f of result.findings) {
+        const verifiedFindings = surface === "app"
+          ? await recheckScrollFindings(page, policy, result.findings)
+          : result.findings;
+        for (const f of verifiedFindings) {
           findings.push({
             ...f,
             target,

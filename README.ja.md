@@ -38,9 +38,9 @@ twitch-downloader, subtitle-downloader, epub-reader, spaced-repetition
 
 <p align="center">
   <a href="https://omniget.nav.bd/"><img src="https://img.shields.io/badge/Website-omniget.nav.bd-FF7D38?style=for-the-badge" alt="Community Website" /></a>
-  <a href="https://github.com/OpenSelena/omniget/releases/latest"><img src="https://img.shields.io/github/v/release/OpenSelena/omniget?style=for-the-badge&label=release&color=F28500" alt="Latest release" /></a>
-  <a href="https://github.com/OpenSelena/omniget/releases"><img src="https://img.shields.io/github/downloads/OpenSelena/omniget/total?style=for-the-badge&label=downloads&color=1E6FE8" alt="Total downloads" /></a>
-  <a href="https://github.com/OpenSelena/omniget/stargazers"><img src="https://img.shields.io/github/stars/OpenSelena/omniget?style=for-the-badge&color=FFD426" alt="GitHub stars" /></a>
+
+
+
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-2AA845?style=for-the-badge" alt="License GPL-3.0" /></a>
   <a href="https://t.me/OpenSelena"><img src="https://img.shields.io/badge/Telegram-channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram channel" /></a>
   <a href="https://hosted.weblate.org/engage/omniget-openselena/"><img src="https://hosted.weblate.org/widget/omniget-openselena/frontend/svg-badge.svg" alt="Translation status" /></a>
@@ -59,7 +59,7 @@ twitch-downloader, subtitle-downloader, epub-reader, spaced-repetition
 <p align="center">
   <img src="https://img.shields.io/badge/Disclaimer-FF7D38" alt="免責事項" height="20" /><br/>
   <sub>本プロジェクトは独立したフォークであり、OmniGet または原作者 Tonho との提携・関係はありません。<br/>
-  <a href="https://github.com/igect">igect</a> が GPL-3.0 のもとでメンテナンスしています · <a href="https://github.com/tonhowtf">Tonho</a> によるオリジナルのアーキテクチャに基づいています</sub>
+  igect が GPL-3.0 のもとでメンテナンスしています · Tonho によるオリジナルのアーキテクチャに基づいています</sub>
 </p>
 
 <p align="center">
@@ -115,7 +115,7 @@ yt-dlp は OmniGet を動かしているエンジンであり、yt-dlp がなけ
 
 ## ダウンロードとインストール
 
-お使いのシステムを選んでください。すべてのビルドは [Releases ページ](https://github.com/OpenSelena/omniget/releases/latest) で公開されています。アップデートはアプリ内で届きます。
+お使いのシステムを選んでください。すべてのビルドは [Releases ページ](docs/installation/) で公開されています。アップデートはアプリ内で届きます。
 
 <table>
   <tr>
@@ -195,7 +195,7 @@ Windows の `.exe` と同じ場所に `portable.txt`（または `.portable`）�
 
 ## OmniGet でダウンロードできるもの
 
-OmniGet は、よく使われるプラットフォーム向けのネイティブのエクストラクターを備えており、それ以外はすべて、約 1,800 のサイトに対応する [yt-dlp](https://github.com/yt-dlp/yt-dlp) に任せます。
+OmniGet は、よく使われるプラットフォーム向けのネイティブのエクストラクターを備えており、それ以外はすべて、約 1,800 のサイトに対応する yt-dlp に任せます。
 
 | カテゴリ | サイトと形式 |
 |---|---|
@@ -241,7 +241,7 @@ OmniGet は、よく使われるプラットフォーム向けのネイティブ
 
 ### レベル 2: リリースの zip から
 
-すべてのリリースには `omniget-chrome-extension-vX.Y.Z.zip` が含まれています。[最新のリリース](https://github.com/OpenSelena/omniget/releases/latest) からダウンロードして展開し、上記の手順 3〜7 に従って、**パッケージ化されていない拡張機能を読み込む** で展開したフォルダーを指定してください。アプリとブラウザを別々のマシンで使っている場合や、ほかの人のためにインストールする場合はこの方法を使ってください。
+すべてのリリースには `omniget-chrome-extension-vX.Y.Z.zip` が含まれています。[最新のリリース](docs/installation/) からダウンロードして展開し、上記の手順 3〜7 に従って、**パッケージ化されていない拡張機能を読み込む** で展開したフォルダーを指定してください。アプリとブラウザを別々のマシンで使っている場合や、ほかの人のためにインストールする場合はこの方法を使ってください。
 
 ### レベル 3: Firefox、その他のブラウザ、手動ペアリング
 
@@ -663,7 +663,7 @@ Debian と Ubuntu は `.deb`、Fedora、openSUSE、RHEL 系は `.rpm`、それ�
 
 ## コマンドライン
 
-`omniget-cli` は、Windows、macOS（Intel と Apple Silicon）、Linux 向けのすべてのリリースに含まれています。[最新のリリース](https://github.com/OpenSelena/omniget/releases/latest) から `omniget-cli-<version>-<target>` を入手してください。
+`omniget-cli` は、Windows、macOS（Intel と Apple Silicon）、Linux 向けのすべてのリリースに含まれています。[最新のリリース](docs/installation/) から `omniget-cli-<version>-<target>` を入手してください。
 
 ```bash
 omniget info <url>                     # title, formats and size, downloads nothing
@@ -680,7 +680,7 @@ omniget import-cookies cookies.txt     # Netscape format
 OmniGet を使いたいだけであれば、[リリースを入手してください](#ダウンロードとインストール)。ビルドするには、[Rust](https://rustup.rs/)（プラグインの ABI が依存しているため、正確なツールチェーンが `rust-toolchain.toml` で固定されています）、[Node.js](https://nodejs.org/) 18 以上、[pnpm](https://pnpm.io/) が必要です。
 
 ```bash
-git clone https://github.com/OpenSelena/omniget.git
+# Extract the project source archive before continuing.
 cd omniget
 pnpm install
 pnpm tauri dev
@@ -704,7 +704,7 @@ pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 リリースでは、メンテナーだけが持つ秘密鍵でアップデーター用の成果物に署名しているため、単純な `pnpm tauri build` は「A public key has been found, but no private key」というエラーで止まります。上記のフラグはローカルビルドでそれらの成果物を無効にするもので、それ以外は何も変わりません。
 
-`courses`、`telegram`、`convert` の各プラグインは `src-tauri/plugins/` の中にあり、メインのバイナリにコンパイルされます。プラグインのレジストリは [omniget-plugins](https://github.com/OpenSelena/omniget-plugins) です。
+`courses`、`telegram`、`convert` の各プラグインは `src-tauri/plugins/` の中にあり、メインのバイナリにコンパイルされます。プラグインのレジストリは omniget-plugins です。
 
 技術スタック：Tauri 2、Rust、Svelte 5 を使った SvelteKit、SQLite、yt-dlp、FFmpeg、トレント用の librqbit、whisper.cpp、aria2、gallery-dl。
 
@@ -712,18 +712,15 @@ pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 ## コントリビュートと翻訳
 
-バグ報告とプルリクエストは [Issues](https://github.com/OpenSelena/omniget/issues) と [Pull requests](https://github.com/OpenSelena/omniget/pulls) にお願いします。質問やちょっとしたヘルプは [Telegram](https://t.me/OpenSelena) で受け付けています。セキュリティに関する問い合わせや脆弱性の報告：[SECURITY.md](SECURITY.md) または [igect@vk.com](mailto:igect@vk.com)。
+バグ報告とプルリクエストは Issues と Pull requests にお願いします。質問やちょっとしたヘルプは [Telegram](https://t.me/OpenSelena) で受け付けています。セキュリティに関する問い合わせや脆弱性の報告：[SECURITY.md](SECURITY.md) または [igect@vk.com](mailto:igect@vk.com)。
 
 翻訳は [Weblate](https://hosted.weblate.org/engage/omniget-openselena/) で管理しています。言語を選んで、ブラウザ上で翻訳してください。新しい文字列は、`main` に取り込まれてから数時間後にそこに表示されます。
 
-OmniGet は、[yt-dlp](https://github.com/yt-dlp/yt-dlp)、[FFmpeg](https://ffmpeg.org/)、[gallery-dl](https://github.com/mikf/gallery-dl)、[whisper.cpp](https://github.com/ggerganov/whisper.cpp)、[aria2](https://aria2.github.io/)、[SponsorBlock](https://sponsor.ajay.app/)、[Return YouTube Dislike](https://returnyoutubedislike.com/)、[FxTwitter](https://github.com/FixTweet/FxTwitter)、[Spicetify](https://spicetify.app/)、[cat-catch](https://github.com/xifangczy/cat-catch)（拡張機能のメディアスニッファーの一部）、[Tauri](https://tauri.app/) の上に作られています。これらをメンテナンスしているすべての方に感謝します。
+OmniGet は、yt-dlp、[FFmpeg](https://ffmpeg.org/)、gallery-dl、whisper.cpp、[aria2](https://aria2.github.io/)、[SponsorBlock](https://sponsor.ajay.app/)、[Return YouTube Dislike](https://returnyoutubedislike.com/)、FxTwitter、[Spicetify](https://spicetify.app/)、cat-catch（拡張機能のメディアスニッファーの一部）、[Tauri](https://tauri.app/) の上に作られています。これらをメンテナンスしているすべての方に感謝します。
 
 ペンギンのマスコットは OmniGet の公式マスコットです。ファンアートは大歓迎です。プロジェクトのブランドアセットを許可なく商用利用したり、誤解を招くサードパーティのフォークに同梱したりすることはできません。
 
-<p align="center">
-  <a href="https://star-history.com/#OpenSelena/omniget&Date"><img src="https://api.star-history.com/svg?repos=OpenSelena/omniget&type=Date" alt="OpenSelena/omniget のスター履歴" width="600" /></a>
-</p>
 
 <p align="center">
-  <a href="https://github.com/OpenSelena/omniget/releases/latest"><b>OmniGet をダウンロード</b></a> · <a href="LICENSE">GPL-3.0</a>
+  <a href="docs/installation/"><b>OmniGet をダウンロード</b></a> · <a href="LICENSE">GPL-3.0</a>
 </p>

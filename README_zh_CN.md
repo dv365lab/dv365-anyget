@@ -28,9 +28,9 @@ spicetify, 下载管理器, tauri, rust, svelte.
 
 <p align="center">
   <a href="https://omniget.nav.bd/"><img src="https://img.shields.io/badge/Website-omniget.nav.bd-FF7D38?style=for-the-badge" alt="社区网站" /></a>
-  <a href="https://github.com/OpenSelena/omniget/releases/latest"><img src="https://img.shields.io/github/v/release/OpenSelena/omniget?style=for-the-badge&label=release&color=F28500" alt="最新版本" /></a>
-  <a href="https://github.com/OpenSelena/omniget/releases"><img src="https://img.shields.io/github/downloads/OpenSelena/omniget/total?style=for-the-badge&label=downloads&color=1E6FE8" alt="总下载量" /></a>
-  <a href="https://github.com/OpenSelena/omniget/stargazers"><img src="https://img.shields.io/github/stars/OpenSelena/omniget?style=for-the-badge&color=FFD426" alt="GitHub Star 数" /></a>
+
+
+
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-2AA845?style=for-the-badge" alt="GPL-3.0 许可证" /></a>
   <a href="https://t.me/OpenSelena"><img src="https://img.shields.io/badge/Telegram-频道-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram 频道" /></a>
   <a href="https://hosted.weblate.org/engage/omniget-openselena/"><img src="https://hosted.weblate.org/widget/omniget-openselena/frontend/svg-badge.svg" alt="翻译状态" /></a>
@@ -49,7 +49,7 @@ spicetify, 下载管理器, tauri, rust, svelte.
 <p align="center">
   <img src="https://img.shields.io/badge/免责声明-FF7D38" alt="免责声明" height="20" /><br/>
   <sub>本项目为独立分支，与 OmniGet 或原作者 Tonho 无任何关联或隶属关系。<br/>
-  由 <a href="https://github.com/igect">igect</a> 在 GPL-3.0 协议下维护 · 基于 <a href="https://github.com/tonhowtf">Tonho</a> 的原版架构</sub>
+  由 igect 在 GPL-3.0 协议下维护 · 基于 Tonho 的原版架构</sub>
 </p>
 
 <p align="center">
@@ -103,7 +103,7 @@ yt-dlp 是 OmniGet 运行的引擎，没有它就没有 OmniGet。如果你常�
 
 ## 下载与安装
 
-选择你的系统。所有构建都发布在 [Releases 页面](https://github.com/OpenSelena/omniget/releases/latest)。更新在应用内推送。
+选择你的系统。所有构建都发布在 [Releases 页面](docs/installation/)。更新在应用内推送。
 
 <table>
   <tr>
@@ -171,7 +171,7 @@ codesign --force --deep --sign - /Applications/omniget.app
 
 ## OmniGet 能下载什么
 
-OmniGet 为最常用的平台写了原生提取器，其余的交给 [yt-dlp](https://github.com/yt-dlp/yt-dlp)，后者覆盖大约 1,800 个网站。
+OmniGet 为最常用的平台写了原生提取器，其余的交给 yt-dlp，后者覆盖大约 1,800 个网站。
 
 | 类别 | 网站与格式 |
 |---|---|
@@ -215,7 +215,7 @@ OmniGet 为最常用的平台写了原生提取器，其余的交给 [yt-dlp](ht
 
 ### 级别二：从发布包的 zip 安装
 
-每个版本都附带 `omniget-chrome-extension-vX.Y.Z.zip`。从[最新版本](https://github.com/OpenSelena/omniget/releases/latest)下载、解压，然后按上面第 3 到第 7 步操作，把**加载已解压的扩展程序**指向解压出的文件夹。适合应用装在一台电脑、浏览器在另一台的情况，或者你在帮别人安装。
+每个版本都附带 `omniget-chrome-extension-vX.Y.Z.zip`。从[最新版本](docs/installation/)下载、解压，然后按上面第 3 到第 7 步操作，把**加载已解压的扩展程序**指向解压出的文件夹。适合应用装在一台电脑、浏览器在另一台的情况，或者你在帮别人安装。
 
 ### 级别三：Firefox、其他浏览器和手动配对
 
@@ -502,7 +502,7 @@ Debian 和 Ubuntu：`.deb`。Fedora、openSUSE、RHEL 系：`.rpm`。其他：`.
 
 ## 命令行
 
-`omniget-cli` 随每个版本发布，支持 Windows、macOS（Intel 和 Apple Silicon）和 Linux。从[最新版本](https://github.com/OpenSelena/omniget/releases/latest)下载 `omniget-cli-<版本>-<平台>`。
+`omniget-cli` 随每个版本发布，支持 Windows、macOS（Intel 和 Apple Silicon）和 Linux。从[最新版本](docs/installation/)下载 `omniget-cli-<版本>-<平台>`。
 
 ```bash
 omniget info <url>                     # 标题、格式和大小，不下载任何东西
@@ -519,11 +519,17 @@ omniget import-cookies cookies.txt     # Netscape 格式
 如果你只是想用 OmniGet，请[直接下载发布版](#下载与安装)。构建需要 [Rust](https://rustup.rs/)（精确的工具链版本固定在 `rust-toolchain.toml` 里，因为插件 ABI 依赖它）、[Node.js](https://nodejs.org/) 18+ 和 [pnpm](https://pnpm.io/)。
 
 ```bash
-git clone https://github.com/OpenSelena/omniget.git
+# Extract the project source archive before continuing.
 cd omniget
 pnpm install
 pnpm tauri dev
 ```
+
+### Windows 双击启动
+
+安装好上述开发工具以及 Visual Studio Build Tools（勾选「使用 C++ 的桌面开发」和 Windows SDK）、WebView2 Runtime 后，双击项目根目录的 [`start.bat`](start.bat) 即可启动桌面应用的开发模式，无需手动输入命令。
+
+脚本会自动切换到项目目录，检查 Node.js、pnpm 和 Cargo，执行 `pnpm install --frozen-lockfile` 安装或同步依赖，再运行 `pnpm tauri dev`。首次启动需要联网下载依赖和项目固定的 Rust 工具链，编译耗时较长；运行期间请保持命令窗口开启。启动失败时窗口会保留错误信息，按任意键关闭。脚本不会自动安装系统开发工具；仅想使用应用时，仍建议下载发布版。
 
 <details>
 <summary>Linux 构建依赖</summary>
@@ -543,7 +549,7 @@ pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 正式版本用只有维护者持有的私钥签名更新包，所以直接 `pnpm tauri build` 会停在 "A public key has been found, but no private key"。上面的参数在本地构建时关掉这些更新包，其他一切不变。
 
-核心插件（`courses`、`telegram`、`convert`）均作为内置模块静态链接在 `src-tauri/plugins/` 目录中，随主程序一起编译。插件注册表为 [omniget-plugins](https://github.com/OpenSelena/omniget-plugins)。
+核心插件（`courses`、`telegram`、`convert`）均作为内置模块静态链接在 `src-tauri/plugins/` 目录中，随主程序一起编译。插件注册表为 omniget-plugins。
 
 技术栈：Tauri 2、Rust、SvelteKit（Svelte 5）、SQLite、yt-dlp、FFmpeg、librqbit（种子）、whisper.cpp、aria2、gallery-dl。
 
@@ -551,18 +557,15 @@ pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 ## 参与贡献与翻译
 
-Bug 报告和 Pull Request 请提到 [Issues](https://github.com/OpenSelena/omniget/issues) 和 [Pull requests](https://github.com/OpenSelena/omniget/pulls)。提问和快速求助在 [Telegram](https://t.me/OpenSelena)。
+Bug 报告和 Pull Request 请提到 Issues 和 Pull requests。提问和快速求助在 [Telegram](https://t.me/OpenSelena)。
 
 翻译在 [Weblate](https://hosted.weblate.org/engage/omniget-openselena/) 上进行。选择你的语言，直接在浏览器里翻译。新字符串合入 `main` 几小时后就会出现在那里。
 
-OmniGet 建立在 [yt-dlp](https://github.com/yt-dlp/yt-dlp)、[FFmpeg](https://ffmpeg.org/)、[gallery-dl](https://github.com/mikf/gallery-dl)、[whisper.cpp](https://github.com/ggerganov/whisper.cpp)、[aria2](https://aria2.github.io/)、[SponsorBlock](https://sponsor.ajay.app/)、[Return YouTube Dislike](https://returnyoutubedislike.com/)、[FxTwitter](https://github.com/FixTweet/FxTwitter)、[Spicetify](https://spicetify.app/) 和 [Tauri](https://tauri.app/) 之上。感谢所有维护这些项目的人。
+OmniGet 建立在 yt-dlp、[FFmpeg](https://ffmpeg.org/)、gallery-dl、whisper.cpp、[aria2](https://aria2.github.io/)、[SponsorBlock](https://sponsor.ajay.app/)、[Return YouTube Dislike](https://returnyoutubedislike.com/)、FxTwitter、[Spicetify](https://spicetify.app/) 和 [Tauri](https://tauri.app/) 之上。感谢所有维护这些项目的人。
 
 主界面上的企鹅是 OmniGet 的吉祥物。欢迎社区同人创作。项目品牌与美术资源不得用于商业用途或打包进第三方衍生版本。
 
-<p align="center">
-  <a href="https://star-history.com/#OpenSelena/omniget&Date"><img src="https://api.star-history.com/svg?repos=OpenSelena/omniget&type=Date" alt="OpenSelena/omniget 的 Star 历史" width="600" /></a>
-</p>
 
 <p align="center">
-  <a href="https://github.com/OpenSelena/omniget/releases/latest"><b>下载 OmniGet</b></a> · <a href="LICENSE">GPL-3.0</a>
+  <a href="docs/installation/"><b>下载 OmniGet</b></a> · <a href="LICENSE">GPL-3.0</a>
 </p>

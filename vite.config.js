@@ -97,7 +97,8 @@ export default defineConfig(({ command }) => {
     server: {
       port: 1420,
       strictPort: true,
-      host: host || false,
+      // Use the same IPv4 loopback as Tauri; localhost may bind only to ::1 on Windows.
+      host: host || "127.0.0.1",
       hmr: host
         ? {
             protocol: "ws",

@@ -1,17 +1,14 @@
 {
-  "updated_at": "2026-10-12",
+  "updated_at": "2026-11-07",
   "targets": {
     "/": {
       "control-gap": 6,
-      "control-size": 16,
-      "label-consistency": 5,
-      "text-contrast": 27
+      "control-size": 10,
+      "label-consistency": 2,
+      "text-contrast": 20
     },
-    "/about": {
-      "control-size": 2,
-      "label-consistency": 3,
-      "text-contrast": 2
-    },
+    "/about": {},
+    "/about/project": {},
     "/convert": {
       "control-size": 2,
       "font-size": 4,
@@ -26,30 +23,22 @@
     },
     "/downloads": {
       "control-gap": 2,
-      "control-size": 9,
-      "label-consistency": 3,
-      "text-contrast": 2
+      "control-size": 7
     },
     "/marketplace": {
       "control-gap": 1,
-      "control-size": 20,
-      "label-consistency": 3,
-      "text-contrast": 20
+      "control-size": 18,
+      "text-contrast": 18
     },
     "/nami": {
       "aria-reference": 4,
       "control-gap": 8,
-      "control-size": 6,
-      "font-size": 10,
-      "label-consistency": 3,
-      "text-contrast": 6
+      "font-size": 10
     },
     "/settings": {
       "control-gap": 18,
-      "control-size": 2,
       "font-size": 10,
-      "label-consistency": 3,
-      "text-contrast": 6
+      "text-contrast": 2
     },
     "/study": {
       "control-gap": 4,
@@ -67,9 +56,11 @@
     "/tools": {
       "content-clipping": 2,
       "control-gap": 8,
-      "control-size": 12,
-      "label-consistency": 17,
-      "text-contrast": 6
-    }
+      "control-size": 10,
+      "label-consistency": 14,
+      "text-contrast": 2
+    },
+    "/tools/speech/speech-clone": {},
+    "/tools/youtube/yt-codec": {}
   }
 }

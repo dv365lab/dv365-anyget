@@ -96,14 +96,14 @@
       type="button"
       class="mac-search-field"
       onclick={() => openCommandPalette()}
-      aria-label={$t("command_palette.open")}
+      aria-label={`${$t("command_palette.open")} ${shortcut("K")}`}
       aria-keyshortcuts="Meta+K Control+K"
     >
-      <svg class="mac-search-glyph" viewBox="0 0 20 20" width="13" height="13" fill="currentColor" aria-hidden="true">
+      <svg class="mac-search-glyph" viewBox="0 0 20 20" width="12" height="12" fill="currentColor" aria-hidden="true">
         <path d="M8.5 2.5a6 6 0 1 0 3.67 10.74l3.8 3.79a1 1 0 0 0 1.41-1.41l-3.79-3.8A6 6 0 0 0 8.5 2.5zM4.5 8.5a4 4 0 1 1 8 0 4 4 0 0 1-8 0z" />
       </svg>
       <span class="mac-search-label">{$t("command_palette.open")}</span>
-      <span class="kbd">{shortcut("K")}</span>
+      <span class="kbd" aria-hidden="true">{shortcut("K")}</span>
     </button>
   </div>
 </header>

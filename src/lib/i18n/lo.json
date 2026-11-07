@@ -3882,7 +3882,7 @@
       "silence_done": "ພົບຊ່ວງງຽບ {{saved}} — ການຫຼິ້ນສາມາດຂ້າມໄດ້",
       "portable_label": "ໂໝດພົກພາ",
       "portable_active": "ໂໝດພົກພາເປີດໃຊ້ຢູ່. ຂໍ້ມູນຂອງ OmniGet ຖືກເກັບໄວ້ໃນ {{dir}}.",
-      "portable_macos_notice": "ໃນ macOS, WebView ຍັງເກັບຂໍ້ມູນເຊສຊັນໄວ້ພາຍໃຕ້ ~/Library ແລະ ໂໝດພົກພາບໍ່ສາມາດປ່ຽນເສັ້ນທາງໄດ້. ມີແຕ່ຂໍ້ມູນຂອງ OmniGet ເອງທີ່ພົກພາໄດ້ — ເບິ່ງ github.com/OpenSelena/omniget/issues/227."
+      "portable_macos_notice": "ໃນ macOS, WebView ຍັງເກັບຂໍ້ມູນເຊສຊັນໄວ້ພາຍໃຕ້ ~/Library ແລະ ໂໝດພົກພາບໍ່ສາມາດປ່ຽນເສັ້ນທາງໄດ້. ມີແຕ່ຂໍ້ມູນຂອງ OmniGet ເອງທີ່ພົກພາໄດ້."
     },
     "dependencies": {
       "title": "ສ່ວນປະກອບທີ່ຈຳເປັນ",

@@ -3881,7 +3881,7 @@
       "silence_done": "Найдено тишины: {{saved}} — плеер может её пропускать",
       "portable_label": "Портативный режим",
       "portable_active": "Портативный режим активен. Данные OmniGet хранятся в {{dir}}.",
-      "portable_macos_notice": "На macOS WebView всё равно хранит сессионные данные в ~/Library, и портативный режим не может это перенаправить. Портативны только собственные данные OmniGet — см. github.com/OpenSelena/omniget/issues/227."
+      "portable_macos_notice": "На macOS WebView всё равно хранит сессионные данные в ~/Library, и портативный режим не может это перенаправить. Портативны только собственные данные OmniGet."
     },
     "dependencies": {
       "title": "Зависимости",

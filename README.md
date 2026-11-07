@@ -1,3 +1,20 @@
+<p align="center">
+  <img src="assets/readme/dv365-logo.png" alt="DV365 Logo" width="200" />
+</p>
+
+<table align="center">
+  <tr>
+    <th align="center">公众号《芯片验证日记》</th>
+    <th align="center">AI 学习社区</th>
+    <th align="center">我的微信</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/readme/chip-verification-diary-qrcode.jpg" alt="公众号《芯片验证日记》二维码" width="200" /></td>
+    <td align="center"><img src="assets/readme/ai-learning-community.jpg" alt="AI 学习社区二维码" width="200" /></td>
+    <td align="center"><img src="assets/readme/wechat-contact.jpg" alt="我的微信二维码" width="200" /></td>
+  </tr>
+</table>
+
 <!--
 Search keywords (kept here so GitHub search, Google and AI assistants can find the project):
 OmniGet is a free open source downloader and media toolbox for Windows, macOS and Linux.
@@ -38,9 +55,9 @@ twitch-downloader, subtitle-downloader, epub-reader, spaced-repetition
 
 <p align="center">
   <a href="https://omniget.nav.bd/"><img src="https://img.shields.io/badge/Website-omniget.nav.bd-FF7D38?style=for-the-badge" alt="Community Website" /></a>
-  <a href="https://github.com/OpenSelena/omniget/releases/latest"><img src="https://img.shields.io/github/v/release/OpenSelena/omniget?style=for-the-badge&label=release&color=F28500" alt="Latest release" /></a>
-  <a href="https://github.com/OpenSelena/omniget/releases"><img src="https://img.shields.io/github/downloads/OpenSelena/omniget/total?style=for-the-badge&label=downloads&color=1E6FE8" alt="Total downloads" /></a>
-  <a href="https://github.com/OpenSelena/omniget/stargazers"><img src="https://img.shields.io/github/stars/OpenSelena/omniget?style=for-the-badge&color=FFD426" alt="GitHub stars" /></a>
+
+
+
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-2AA845?style=for-the-badge" alt="License GPL-3.0" /></a>
   <a href="https://t.me/OpenSelena"><img src="https://img.shields.io/badge/Telegram-channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram channel" /></a>
   <a href="https://hosted.weblate.org/engage/omniget-openselena/"><img src="https://hosted.weblate.org/widget/omniget-openselena/frontend/svg-badge.svg" alt="Translation status" /></a>
@@ -59,7 +76,7 @@ twitch-downloader, subtitle-downloader, epub-reader, spaced-repetition
 <p align="center">
   <img src="https://img.shields.io/badge/Disclaimer-FF7D38" alt="Disclaimer" height="20" /><br/>
   <sub>This project is an independent fork and is not affiliated with OmniGet or with Tonho.<br/>
-  Maintained by <a href="https://github.com/igect">igect</a> under GPL-3.0 · Based on original architecture by <a href="https://github.com/tonhowtf">Tonho</a></sub>
+  Maintained by igect under GPL-3.0 · Based on original architecture by Tonho</sub>
 </p>
 
 <p align="center">
@@ -115,7 +132,7 @@ yt-dlp is the engine OmniGet runs on, and OmniGet would not exist without it. If
 
 ## Download and install
 
-Pick your system. Every build is published on the [Releases page](https://github.com/OpenSelena/omniget/releases/latest). Updates arrive inside the app.
+Pick your system. Every build is published on the [Releases page](docs/installation/). Updates arrive inside the app.
 
 <table>
   <tr>
@@ -195,7 +212,7 @@ Copy a link anywhere on your system and press **Ctrl+Shift+D** (**Cmd+Shift+D** 
 
 ## What OmniGet downloads
 
-OmniGet has native extractors for the platforms people use most, and hands everything else to [yt-dlp](https://github.com/yt-dlp/yt-dlp), which covers roughly 1,800 sites.
+OmniGet has native extractors for the platforms people use most, and hands everything else to yt-dlp, which covers roughly 1,800 sites.
 
 | Category | Sites and formats |
 |---|---|
@@ -241,7 +258,7 @@ From now on, visit any supported page and click the icon. The page, its cookies 
 
 ### Level 2: from the release zip
 
-Every release ships `omniget-chrome-extension-vX.Y.Z.zip`. Download it from the [latest release](https://github.com/OpenSelena/omniget/releases/latest), unzip it, then follow steps 3 to 7 above pointing **Load unpacked** at the unzipped folder. Use this if you keep the app on one machine and the browser on another, or if you are installing for someone else.
+Every release ships `omniget-chrome-extension-vX.Y.Z.zip`. Download it from the [latest release](docs/installation/), unzip it, then follow steps 3 to 7 above pointing **Load unpacked** at the unzipped folder. Use this if you keep the app on one machine and the browser on another, or if you are installing for someone else.
 
 ### Level 3: Firefox, other browsers and manual pairing
 
@@ -663,7 +680,7 @@ Debian and Ubuntu: `.deb`. Fedora, openSUSE, RHEL family: `.rpm`. Anything else:
 
 ## Command line
 
-`omniget-cli` ships with every release for Windows, macOS (Intel and Apple Silicon) and Linux. Grab `omniget-cli-<version>-<target>` from the [latest release](https://github.com/OpenSelena/omniget/releases/latest).
+`omniget-cli` ships with every release for Windows, macOS (Intel and Apple Silicon) and Linux. Grab `omniget-cli-<version>-<target>` from the [latest release](docs/installation/).
 
 ```bash
 omniget info <url>                     # title, formats and size, downloads nothing
@@ -680,7 +697,7 @@ omniget import-cookies cookies.txt     # Netscape format
 If you only want to use OmniGet, [grab a release](#download-and-install). To build it you need [Rust](https://rustup.rs/) (the exact toolchain is pinned in `rust-toolchain.toml` because the plugin ABI depends on it), [Node.js](https://nodejs.org/) 18+ and [pnpm](https://pnpm.io/).
 
 ```bash
-git clone https://github.com/OpenSelena/omniget.git
+# Extract the project source archive before continuing.
 cd omniget
 pnpm install
 pnpm tauri dev
@@ -704,7 +721,7 @@ pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 Releases sign their updater artifacts with a private key only the maintainer holds, so a plain `pnpm tauri build` stops with "A public key has been found, but no private key". The flag above turns those artifacts off for a local build and changes nothing else.
 
-The `courses`, `telegram` and `convert` plugins live inside `src-tauri/plugins/` and compile into the main binary. The plugin registry is [omniget-plugins](https://github.com/OpenSelena/omniget-plugins).
+The `courses`, `telegram` and `convert` plugins live inside `src-tauri/plugins/` and compile into the main binary. The plugin registry is omniget-plugins.
 
 Stack: Tauri 2, Rust, SvelteKit with Svelte 5, SQLite, yt-dlp, FFmpeg, librqbit for torrents, whisper.cpp, aria2, gallery-dl.
 
@@ -712,18 +729,15 @@ Stack: Tauri 2, Rust, SvelteKit with Svelte 5, SQLite, yt-dlp, FFmpeg, librqbit 
 
 ## Contributing and translations
 
-Bug reports and pull requests go to [Issues](https://github.com/OpenSelena/omniget/issues) and [Pull requests](https://github.com/OpenSelena/omniget/pulls). Questions and quick help live on [Telegram](https://t.me/OpenSelena). Security inquiries and vulnerability reports: [SECURITY.md](SECURITY.md) or [igect@vk.com](mailto:igect@vk.com).
+Bug reports and pull requests go to Issues and Pull requests. Questions and quick help live on [Telegram](https://t.me/OpenSelena). Security inquiries and vulnerability reports: [SECURITY.md](SECURITY.md) or [igect@vk.com](mailto:igect@vk.com).
 
 Translations are managed on [Weblate](https://hosted.weblate.org/engage/omniget-openselena/). Pick your language and translate in the browser. New strings appear there a few hours after they land in `main`.
 
-OmniGet is built on [yt-dlp](https://github.com/yt-dlp/yt-dlp), [FFmpeg](https://ffmpeg.org/), [gallery-dl](https://github.com/mikf/gallery-dl), [whisper.cpp](https://github.com/ggerganov/whisper.cpp), [aria2](https://aria2.github.io/), [SponsorBlock](https://sponsor.ajay.app/), [Return YouTube Dislike](https://returnyoutubedislike.com/), [FxTwitter](https://github.com/FixTweet/FxTwitter), [Spicetify](https://spicetify.app/), [cat-catch](https://github.com/xifangczy/cat-catch) (parts of the extension's media sniffer) and [Tauri](https://tauri.app/). Thank you to everyone who maintains them.
+OmniGet is built on yt-dlp, [FFmpeg](https://ffmpeg.org/), gallery-dl, whisper.cpp, [aria2](https://aria2.github.io/), [SponsorBlock](https://sponsor.ajay.app/), [Return YouTube Dislike](https://returnyoutubedislike.com/), FxTwitter, [Spicetify](https://spicetify.app/), cat-catch (parts of the extension's media sniffer) and [Tauri](https://tauri.app/). Thank you to everyone who maintains them.
 
 The penguin mascot is OmniGet's project mascot. Community fan art is welcome. Project brand assets may not be used commercially or bundled into misleading third-party forks without permission.
 
-<p align="center">
-  <a href="https://star-history.com/#OpenSelena/omniget&Date"><img src="https://api.star-history.com/svg?repos=OpenSelena/omniget&type=Date" alt="Star history of OpenSelena/omniget" width="600" /></a>
-</p>
 
 <p align="center">
-  <a href="https://github.com/OpenSelena/omniget/releases/latest"><b>Download OmniGet</b></a> · <a href="LICENSE">GPL-3.0</a>
+  <a href="docs/installation/"><b>Download OmniGet</b></a> · <a href="LICENSE">GPL-3.0</a>
 </p>

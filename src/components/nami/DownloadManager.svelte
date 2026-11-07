@@ -488,12 +488,13 @@
   }
 
   .dl-link {
-    color: var(--oo-accent);
+    color: var(--text);
     text-decoration: underline;
     font-size: inherit;
     background: transparent;
     border: none;
-    padding: 0;
+    min-height: 28px;
+    padding: 0 8px;
     cursor: pointer;
   }
 

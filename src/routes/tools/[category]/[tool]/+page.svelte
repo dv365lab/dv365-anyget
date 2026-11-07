@@ -393,9 +393,11 @@
     align-self: flex-start;
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--accent-hi);
+    color: var(--text);
     text-decoration: none;
   }
+
+  .tool-head .tag { color: var(--text); }
 
   .tools-back:hover {
     text-decoration: underline;

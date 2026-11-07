@@ -3882,7 +3882,7 @@
       "silence_done": "发现 {{saved}} 的静音 —— 播放时可以跳过",
       "portable_label": "便携模式",
       "portable_active": "便携模式已启用，OmniGet 的数据存储在 {{dir}} 中。",
-      "portable_macos_notice": "在 macOS 上，WebView 仍会把会话数据存储在 ~/Library 下，便携模式无法将其重定向。此处只有 OmniGet 自身的数据是便携的——详见 github.com/OpenSelena/omniget/issues/227。"
+      "portable_macos_notice": "在 macOS 上，WebView 仍会把会话数据存储在 ~/Library 下，便携模式无法将其重定向。此处只有 OmniGet 自身的数据是便携的。"
     },
     "dependencies": {
       "title": "依赖项",

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { validatePolicy } from "lintapple";
@@ -136,6 +136,43 @@ describe("UI Lint Policies & Target Runner", () => {
     });
     expect(docsFail.passed).toBe(false);
     expect(docsFail.worse.length).toBe(2);
+  });
+
+  it("rechecks scroll-clipped controls without suppressing real failures", async () => {
+    const { recheckScrollFindings } = await import("../../scripts/lint-ui.mjs");
+    const clipped = { rule: "control-size", selector: ".choose", message: "Found 78 × 0px" };
+    const saved = { dispose: vi.fn() };
+    const page = {
+      evaluate: vi.fn().mockResolvedValue(true),
+      evaluateHandle: vi.fn().mockResolvedValue(saved),
+    };
+    const audit = vi.fn().mockResolvedValue({ findings: [] });
+    expect(await recheckScrollFindings(page, {}, [clipped], audit)).toEqual([]);
+    expect(audit).toHaveBeenCalledOnce();
+    expect(saved.dispose).toHaveBeenCalledOnce();
+
+    const realFailure = { ...clipped, message: "Found 18 × 18px" };
+    audit.mockResolvedValue({ findings: [realFailure] });
+    expect(await recheckScrollFindings(page, {}, [clipped], audit)).toEqual([realFailure]);
+
+    page.evaluate.mockResolvedValue(false);
+    audit.mockClear();
+    expect(await recheckScrollFindings(page, {}, [clipped], audit)).toEqual([clipped]);
+    expect(audit).not.toHaveBeenCalled();
+  });
+
+  it("restores scroll state even when a recheck fails", async () => {
+    const { recheckScrollFindings } = await import("../../scripts/lint-ui.mjs");
+    const saved = { dispose: vi.fn() };
+    const page = {
+      evaluate: vi.fn().mockResolvedValue(true),
+      evaluateHandle: vi.fn().mockResolvedValue(saved),
+    };
+    const audit = vi.fn().mockRejectedValue(new Error("audit failed"));
+    const findings = [{ rule: "control-size", selector: ".choose", message: "Found 78 × 0px" }];
+    await expect(recheckScrollFindings(page, {}, findings, audit)).rejects.toThrow("audit failed");
+    expect(page.evaluate).toHaveBeenCalledTimes(2);
+    expect(saved.dispose).toHaveBeenCalledOnce();
   });
 
   it("registers lint:ui and lint:ui:update in package.json and ships scripts/ui-lint-baseline.json", () => {
